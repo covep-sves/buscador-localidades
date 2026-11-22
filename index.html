@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buscador de localidades – DCV</title>
+<meta name="description" content="Busque localidades do SisPNCD e veja o bairro e o distrito sanitário do INCID no mapa. DCV/COVEP – São Luís.">
+<meta name="theme-color" content="#0B3F5F">
+
+<!-- Prévia do link no WhatsApp e redes sociais -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DCV · COVEP · São Luís">
+<meta property="og:title" content="Buscador de localidades – DCV">
+<meta property="og:description" content="Localidades do SisPNCD com bairro e distrito sanitário do INCID no mapa.">
+<meta property="og:url" content="https://covep-sves.github.io/buscador-localidades/">
+<meta property="og:image" content="https://covep-sves.github.io/buscador-localidades/dcv-compartilhamento.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo da Divisão de Controle Vetorial e o título Buscador de localidades">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Ícones (aba do navegador e atalho na tela inicial do celular) -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Localidades DCV">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<style>
+html,body{margin:0;height:100%;background:#EAF1F4;font:16px/1.5 Arial,sans-serif;color:#0B3F5F}
+#app{position:fixed;inset:0;width:100%;height:100%;border:0;background:transparent;padding-top:env(safe-area-inset-top)}
+.capa{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px}
+.capa img.dcv{width:120px;height:120px}
+.capa h1{font-size:22px;margin:4px 0 0}
+.capa p{margin:0;color:#5B7280;font-size:15px}
+.barra{width:220px;height:6px;margin:8px 0;background:linear-gradient(90deg,#FCDF07 0 14.28%,#D1D330 0 28.57%,#B2CA52 0 42.85%,#92BE71 0 57.14%,#7CBA91 0 71.42%,#55AAAF 0 85.71%,#339ED6 0)}
+.capa a{color:#2A7CBA;font-weight:700}
+.capa .erro{display:none;max-width:420px;background:#fff;border-radius:10px;padding:12px 14px;color:#1D2E39}
+</style>
+</head>
+<body>
+<div class="capa">
+  <img class="dcv" src="dcv-icone-192.png" alt="DCV – Divisão de Controle Vetorial">
+  <h1>Buscador de localidades</h1>
+  <div class="barra"></div>
+  <p id="msg">Carregando…</p>
+  <p class="erro" id="erro"></p>
+  <img src="covep-sves.png" alt="Vigilância Epidemiológica – SVES/SEMUS" style="height:44px;margin-top:10px">
+</div>
+<iframe id="app" title="Buscador de localidades" allow="clipboard-write" hidden></iframe>
+
+<script>
+/* ===== CONFIGURAÇÃO =====
+   Cole entre as aspas o endereço do app do Apps Script (termina em /exec). */
+var APP_URL = 'https://script.google.com/macros/s/AKfycbzh0FmkuwhVHDmtVMJoEn-TqBU0La1T_LUzA0IZ1etM0ZgggsFdY8N1q5pUiUcvqBxP4Q/exec';
+/* ======================== */
+
+(function () {
+  var f = document.getElementById('app'), erro = document.getElementById('erro'), msg = document.getElementById('msg');
+  if (APP_URL.indexOf('script.google.com') < 0) {
+    msg.textContent = 'O endereço do app ainda não foi configurado.';
+    erro.style.display = 'block';
+    erro.textContent = 'Abra o arquivo index.html no GitHub e cole o endereço do Apps Script na linha APP_URL.';
+    return;
+  }
+  f.src = APP_URL;
+  f.hidden = false;
+  setTimeout(function () {
+    msg.innerHTML = 'Se o buscador não abrir, <a href="' + APP_URL + '">toque aqui para abrir direto</a>.';
+  }, 8000);
+})();
+</script>
+</body>
+</html>
