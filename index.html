@@ -33,22 +33,23 @@
 html,body{margin:0;height:100%;background:#EAF1F4;font:16px/1.5 Arial,sans-serif;color:#0B3F5F}
 #app{position:fixed;inset:0;width:100%;height:100%;border:0;background:transparent;padding-top:env(safe-area-inset-top)}
 .capa{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px}
-.capa img.dcv{width:120px;height:120px}
+.capa img.dcv{height:110px;width:auto}
 .capa h1{font-size:22px;margin:4px 0 0}
 .capa p{margin:0;color:#5B7280;font-size:15px}
 .barra{width:220px;height:6px;margin:8px 0;background:linear-gradient(90deg,#FCDF07 0 14.28%,#D1D330 0 28.57%,#B2CA52 0 42.85%,#92BE71 0 57.14%,#7CBA91 0 71.42%,#55AAAF 0 85.71%,#339ED6 0)}
 .capa a{color:#2A7CBA;font-weight:700}
+.capa img.rod{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom));height:40px}
 .capa .erro{display:none;max-width:420px;background:#fff;border-radius:10px;padding:12px 14px;color:#1D2E39}
 </style>
 </head>
 <body>
 <div class="capa">
-  <img class="dcv" src="dcv-icone-192.png" alt="DCV – Divisão de Controle Vetorial">
+  <img class="dcv" src="dcv-logo.png" alt="DCV – Divisão de Controle Vetorial">
   <h1>Buscador de localidades</h1>
   <div class="barra"></div>
   <p id="msg">Carregando…</p>
   <p class="erro" id="erro"></p>
-  <img src="covep-sves.png" alt="Vigilância Epidemiológica – SVES/SEMUS" style="height:44px;margin-top:10px">
+  <img class="rod" src="covep-sves.png" alt="Vigilância Epidemiológica – SVES/SEMUS">
 </div>
 <iframe id="app" title="Buscador de localidades" allow="clipboard-write" hidden></iframe>
 
